@@ -1,0 +1,14 @@
+:root{
+    --color-primary: skyblue;
+    --color-accent: orange;
+}
+
+input {
+    height: 1.5em;
+    width: 200px;
+    border: 2px solid var(--color-primary);
+}
+
+input:hover, input:focus{
+    border-color: var(--color-accent);
+}
