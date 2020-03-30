@@ -21,7 +21,7 @@ label{
     border-color: var(--color-primary);
 }
 
-.username:hover, .username:focus, .password:hover, .password:focus{
+.username:hover, .username:focus, .password:hover, .password:focus, button:hover, button:focus{
     outline: none;
     border-color: var(--color-accent);
 }
@@ -33,12 +33,25 @@ div .input-field-container{
     justify-content: space-between;
 }
 
-.button{
-    height: 2em;
-    width: 100%;
+button {
+    border-style: solid;
+    background: #ededed;
+    border-width: 2px;
+    padding: 10px 30px;
     border-radius: 5px;
+    border-color: var(--color-primary);
+    cursor: pointer;
 }
 
-.button:active, .button:focus{
+.smol-link {
+    display: inline-block;
+    margin-bottom: 0px;
+    font-size: 0.8em;
+    color: var(--color-primary)
+}
+
+.smol-link:hover, .smol-link:focus{
+    color: var(--color-accent);
+    text-decoration: underline;
     outline: none;
 }

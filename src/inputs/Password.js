@@ -2,7 +2,7 @@ import React from 'react'
 import './inputs.css'
 
 function Password(){
-    return (<div className="input-field-container">
+    return (<div className="input-field-container" tabIndex={-1}>
         <label
             htmlFor="password">
             Password
