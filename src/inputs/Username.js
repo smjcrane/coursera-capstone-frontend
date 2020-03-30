@@ -2,7 +2,7 @@ import React from 'react'
 import './inputs.css'
 
 function Username(){
-    return (<>
+    return (<div className="input-field-container">
         <label
             htmlFor="username">
             Username
@@ -13,7 +13,7 @@ function Username(){
             className="username"
             hint="username">
         </input>
-    </>);
+    </div>);
 }
 
 export default Username;

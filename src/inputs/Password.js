@@ -2,7 +2,7 @@ import React from 'react'
 import './inputs.css'
 
 function Password(){
-    return (<>
+    return (<div className="input-field-container">
         <label
             htmlFor="password">
             Password
@@ -13,7 +13,7 @@ function Password(){
             className="password"
             hint="password">
         </input>
-    </>);
+    </div>);
     // TODO: password advice and strength meter
 
 }
