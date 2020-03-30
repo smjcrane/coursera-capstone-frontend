@@ -3,21 +3,42 @@
     --color-accent: orange;
 }
 
-input {
-    height: 1.5em;
-    width: 130px;
+label{
+    font-weight: bold;
+}
+
+.username, .password {
+    height: 2em;
+    width: calc(100% - 14px);
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
     border-style: solid;
+    border-radius: 5px;
     border-width: 2px;
     border-color: var(--color-primary);
 }
 
-input:hover, input:focus{
+.username:hover, .username:focus, .password:hover, .password:focus{
     outline: none;
     border-color: var(--color-accent);
 }
 
 div .input-field-container{
-    width: 230px;
+    width: 200px;
     display: flex;
+    flex-flow: column;
     justify-content: space-between;
+}
+
+.button{
+    height: 2em;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.button:active, .button:focus{
+    outline: none;
 }

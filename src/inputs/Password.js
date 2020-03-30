@@ -9,7 +9,7 @@ function Password(){
         </label>
         <input
             id="password"
-            type="text"
+            type="password"
             className="password"
             hint="password">
         </input>

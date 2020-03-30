@@ -5,7 +5,7 @@ import Centered from "./Centered"
 function App() {
   return (
       <Centered>
-          <h1>Welcome to Simon's Capstone Project!<br />Log in to get started<br /></h1>
+          <h1>Welcome!<br />Log in to get started<br /></h1>
           <Login />
       </Centered>
   );

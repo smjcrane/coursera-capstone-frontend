@@ -17,3 +17,6 @@ body {
   flex-flow: column;
 }
 
+h1 {
+  margin-top: 0px;
+}
