@@ -8,6 +8,7 @@ function Username(){
             Username
         </label>
         <input
+            autoComplete="username"
             id="username"
             name="username"
             type="text"

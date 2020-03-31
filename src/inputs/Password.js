@@ -8,6 +8,7 @@ function Password(){
             Password
         </label>
         <input
+            autoComplete="password"
             id="password"
             name="password"
             type="password"

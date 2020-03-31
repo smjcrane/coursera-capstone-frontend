@@ -10,14 +10,13 @@ class Inbox extends React.Component {
     }
 
     componentDidMount() {
-        return;
-        fetch("https://stormy-ridge-49818.herokuapp.com/whoami").then(res => {
-            console.log("res", res)
-            this.setState({username: res.body})
-        }).catch(err => {
-            console.log(err)
-            window.location.replace("/index.html")
-        })
+        fetch("https://stormy-ridge-49818.herokuapp.com/whoami", {credentials: "include"})
+            .then(res => res.json())
+            .then(data => this.setState({username: data.username}))
+            .catch(err => {
+                console.log(err)
+                window.location.replace("/index.html")
+            })
     }
 
 
