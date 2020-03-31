@@ -1,4 +1,5 @@
 import React from "react";
+import Message from "./Message"
 
 class Inbox extends React.Component {
     constructor(props) {
@@ -13,8 +14,12 @@ class Inbox extends React.Component {
         fetch("https://stormy-ridge-49818.herokuapp.com/whoami", {credentials: "include"})
             .then(res => res.json())
             .then(data => this.setState({username: data.username}))
+            .then(() =>
+                fetch("https://stormy-ridge-49818.herokuapp.com/messages", {credentials: "include"})
+            )
+            .then(resm => resm.json())
+            .then(datam => this.setState({messages: datam}))
             .catch(err => {
-                console.log(err)
                 window.location.replace("/index.html")
             })
     }
@@ -36,6 +41,9 @@ class Inbox extends React.Component {
             <div>
                 <h2>Hello {this.state.username}</h2>
                 <p>{text}</p>
+                <ul>
+                    {this.state.messages.map(Message)}
+                </ul>
             </div>
         );
     }
