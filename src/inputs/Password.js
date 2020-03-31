@@ -9,6 +9,7 @@ function Password(){
         </label>
         <input
             id="password"
+            name="password"
             type="password"
             className="password"
             hint="password">

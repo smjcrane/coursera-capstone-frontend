@@ -3,7 +3,7 @@ import './inputs.css'
 
 function Button(props){
     return (<div className="input-field-container" tabIndex={-1}>
-        <button>
+        <button type={props.type}>
             {props.text}
         </button>
     </div>);

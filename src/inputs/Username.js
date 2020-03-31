@@ -9,6 +9,7 @@ function Username(){
         </label>
         <input
             id="username"
+            name="username"
             type="text"
             className="username"
             hint="username">
