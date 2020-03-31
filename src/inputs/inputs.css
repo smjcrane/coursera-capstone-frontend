@@ -54,4 +54,5 @@ button {
     color: var(--color-accent);
     text-decoration: underline;
     outline: none;
+    cursor: pointer;
 }
