@@ -32,9 +32,9 @@ class Inbox extends React.Component {
             default:
                 text="You have "+this.state.messages.length+" messages"
         }
-        //                <h2>{this.state.username}</h2>
         return (
             <div>
+                <h2>Hello {this.state.username}</h2>
                 <p>{text}</p>
             </div>
         );

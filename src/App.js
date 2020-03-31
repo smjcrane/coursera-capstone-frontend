@@ -38,7 +38,7 @@ function App() {
                   </div>
               </Route>
               <Route path="/">
-                  <PathNotFound />
+                  <Inbox />
               </Route>
           </Switch>
           </div>
