@@ -7,16 +7,24 @@ body {
 .Centered {
   position: absolute;
   top: 0px;
-  padding: 0px;
   left: 20px;
   right: 20px;
   width: calc(100% - 40px);
   bottom: 0px;
   background-color: white;
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: flex-start;
   flex-flow: column;
+}
+
+.content{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: calc(100% - 150px);
+  width: 100%;
+  overflow: auto;
 }
 
 h1 {
@@ -44,4 +52,18 @@ a {
     left: calc((100% - 500px)/2);
     right: calc((100% - 500px)/2);
   }
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer .smol-link {
+  color: black;
 }

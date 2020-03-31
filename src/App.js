@@ -8,23 +8,44 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import Inbox from "./Inbox";
+import About from "./About";
+import PathNotFound from "./PathNotFound";
+import Footer from "./Footer"
+import Privacy from "./Privacy";
 
 function App() {
   return (
       <Router>
+          <div>
           <Centered>
           <Header />
+          <div className="content">
           <Switch>
               <Route path="/about">
+                  <About />
               </Route>
-              <Route path="/">
+              <Route path="/privacy">
+                  <Privacy/>
+              </Route>
+              <Route path="/inbox">
+                  <Inbox />
+              </Route>
+              <Route path="/index.html">
                   <div>
                       <h1>Welcome!<br />Log in to get started<br /></h1>
                       <Login />
                   </div>
               </Route>
+              <Route path="/">
+                  <PathNotFound />
+              </Route>
           </Switch>
-        </Centered>
+          </div>
+              <Footer />
+          </Centered>
+
+          </div>
         </Router>
   );
 }
