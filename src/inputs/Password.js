@@ -1,25 +1,37 @@
 import React from 'react'
 import './inputs.css'
 
-function Password(props){
-    return (<div className="input-field-container" tabIndex={-1}>
-        <label
-            htmlFor="password">
-            Password
-        </label>
-        <input
-            onChange={props.onChange}
-            autoComplete="password"
-            id="password"
-            name="password"
-            type="password"
-            placeholder="*************"
-            className="password"
-            hint="password">
-        </input>
-    </div>);
-    // TODO: password advice and strength meter
+class Password extends React.Component{
+    constructor(props){
+        super(props)
+        this.onKeyDown = this.onKeyDown.bind(this)
+    }
 
+    onKeyDown(event){
+        if (event.key === "Enter"){
+            this.props.submit()
+        }
+    }
+
+    render() {
+        return (<div className="input-field-container" tabIndex={-1}>
+            <label
+                htmlFor="password">
+                Password
+            </label>
+            <input
+                onChange={this.props.onChange}
+                onKeyDown={this.onKeyDown}
+                autoComplete="password"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="*************"
+                className="password"
+                hint="password">
+            </input>
+        </div>);
+    }
 }
 
 export default Password;
