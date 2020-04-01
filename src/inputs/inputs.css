@@ -21,7 +21,7 @@ label{
     border-color: var(--color-primary);
 }
 
-.username:hover, .username:focus, .password:hover, .password:focus, button:hover, button:focus{
+.username:hover, .username:focus, .password:hover, .password:focus, button:hover, button:focus, send-message-contents:hover, send-message-contents:focus{
     outline: none;
     border-color: var(--color-accent);
 }
@@ -60,4 +60,20 @@ button[disabled]{
     text-decoration: underline;
     outline: none;
     cursor: pointer;
+}
+
+.message-field-container{
+    display: flex;
+    flex-flow: column;
+}
+
+.send-message-contents{
+    min-height: 1em;
+    height: 4em;
+    resize: vertical;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: var(--color-primary);
 }

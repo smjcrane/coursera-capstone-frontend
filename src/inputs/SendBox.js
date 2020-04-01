@@ -1,6 +1,7 @@
 import React from "react";
-import Error from "./Error";
-import Button from "./inputs/Button";
+import Error from "../Error";
+import Button from "./Button";
+import "./inputs.css"
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
 const messageRegex = /^[A-Za-z0-9 ]{0,999}$/
@@ -86,12 +87,13 @@ class SendBox extends React.Component{
     render(){
         return (
             <div style={{"width": "90%"}}>
-                <h3>Send a message</h3>
+                <h2>Send a message</h2>
                 <div className="input-field-container">
                     <label htmlFor="recipient">
                         To:
                     </label>
                     <input
+                        className="username"
                         name="recipient"
                         placeholder="jim"
                         value={this.state.recipient}
@@ -109,6 +111,7 @@ class SendBox extends React.Component{
                         placeholder="Hello"
                         value={this.state.contents}
                         onChange={this.handleMessageChange}
+                        onKeyDown={(event) => {if (event.key === "Enter") this.sendMessage()}}
                     />
                     {this.state.contentsError? <Error text={this.state.contentsError}/> : <></>}
                 </div>
