@@ -1,16 +1,11 @@
+/* eslint-disable */
 import React from 'react';
 import Login from "./inputs/Login";
 import Centered from "./Centered"
 import Header from "./Header";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Inbox from "./Inbox";
 import About from "./About";
-import PathNotFound from "./PathNotFound";
 import Footer from "./Footer"
 import Privacy from "./Privacy";
 

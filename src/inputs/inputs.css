@@ -43,6 +43,10 @@ button {
     cursor: pointer;
 }
 
+button[disabled]{
+    border-color: lightgray;
+}
+
 .smol-link {
     display: inline-block;
     margin-bottom: 0px;

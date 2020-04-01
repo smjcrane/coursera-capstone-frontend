@@ -39,7 +39,7 @@ class Inbox extends React.Component {
         }
         return (
             <div>
-                <h2>Hello {this.state.username}</h2>
+                <h2>Welcome, {this.state.username}</h2>
                 <p>{text}</p>
                 <ul>
                     {this.state.messages.map(Message)}

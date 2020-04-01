@@ -1,7 +1,7 @@
 import React from 'react'
 import './inputs.css'
 
-function Username(){
+function Username(props){
     return (<div className="input-field-container" tabIndex={-1}>
         <label
             htmlFor="username">
@@ -13,7 +13,10 @@ function Username(){
             name="username"
             type="text"
             className="username"
-            hint="username">
+            hint="username"
+            placeholder="Username"
+            value={props.value}
+            onChange={props.onChange}>
         </input>
     </div>);
 }

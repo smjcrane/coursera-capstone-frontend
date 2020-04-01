@@ -67,3 +67,14 @@ a {
 .footer .smol-link {
   color: black;
 }
+
+p.error {
+  color: red;
+  margin-left: 10px;
+}
+
+div.error-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}

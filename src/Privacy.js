@@ -17,7 +17,7 @@ function Privacy(){
             <p>Anyone who knows your username can send you a message.  We will never reveal your username to others, but they may guess it.  We do not currently allow users to block messages from people they don't know.</p>
             <p>Your messages will always be visible to their recipients, but never to other users.</p>
             <h3>Remove your data</h3>
-            <p>You cannot currently delete your account. </p>
+            <p>You cannot currently delete your account or messages. </p>
         </div>
     )
 }
