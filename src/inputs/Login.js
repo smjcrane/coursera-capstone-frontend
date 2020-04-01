@@ -33,6 +33,7 @@ class Login extends React.Component{
         setTimeout(() => this.setState({disabled: false}), 2000)
         fetch("https://stormy-ridge-49818.herokuapp.com/auth", {
             method: "post",
+            credentials: "include",
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
                 username: this.state.username,
