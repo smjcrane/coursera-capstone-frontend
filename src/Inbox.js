@@ -44,7 +44,7 @@ class Inbox extends React.Component {
             <>
                 <Menu />
                 <h2>Welcome, {this.state.username}</h2>
-                <p>{text}</p>
+                <p style={{"margin": "0px"}}>{text}</p>
                 <div className="message-list-container">
                 <ul>
                     {this.state.messages.map(Message)}
