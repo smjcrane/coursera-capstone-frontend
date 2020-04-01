@@ -23,7 +23,6 @@ class Password extends React.Component{
                 onChange={this.props.onChange}
                 onKeyDown={this.onKeyDown}
                 autoComplete="password"
-                id="password"
                 name="password"
                 type="password"
                 placeholder="*************"

@@ -24,7 +24,6 @@ class Username extends React.Component {
             </label>
             <input
                 autoComplete="username"
-                id="username"
                 name="username"
                 type="text"
                 className="username"

@@ -68,9 +68,11 @@ class Login extends React.Component{
     render() {
         return (
             <div>
+                <form action="none">
                 <Username onChange={this.handleUsernameChange} submit={this.sendLogInRequest}/>
                 <Password onChange={this.handlePasswordChange} submit={this.sendLogInRequest}/>
                 <Button text="Log in" onClick={this.sendLogInRequest} disabled={this.state.disabled}/>
+                </form>
                 {this.state.error? <Error text={this.state.error} /> : <></>}
                 <SmolLink text={"Sign up for an account"} to="/register"/>
                 <SmolLink text={"Forgot password?"}/>
