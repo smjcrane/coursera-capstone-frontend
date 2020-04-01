@@ -18,7 +18,8 @@ class SignUp extends React.Component{
             confirmPassword: "",
             usernameAllowed: false,
             passwordsMatch: false,
-            disabled: true
+            disabled: true,
+            alreadyExists: false,
         }
         this.sendRegisterRequest = this.sendRegisterRequest.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -77,6 +78,8 @@ class SignUp extends React.Component{
                     // TODO show some success thing
                     console.log("register successful")
                     this.props.history.push("/index.html");
+                } else if (res.status === 409){
+                    this.setState({alreadyExists:true})
                 } else {
                     throw new Error()
                 }
@@ -94,6 +97,8 @@ class SignUp extends React.Component{
             e = "Usernames are 3-30 alphanumeric characters"
         } else if (!this.state.passwordsMatch && this.state.confirmPassword){
             e = "Passwords do not match"
+        } else if (this.state.alreadyExists){
+            e = "User already exists"
         }
         return (
             <div>
