@@ -7,6 +7,8 @@ import Error from "./Error";
 import {withRouter} from "react-router-dom";
 import StrengthMeter from "./StrengthMeter";
 
+const usernameRegex = /^[A-Za-z0-9]{3,30}$/
+
 class SignUp extends React.Component{
     constructor(props){
         super(props);
@@ -14,6 +16,8 @@ class SignUp extends React.Component{
             username: "",
             password: "",
             confirmPassword: "",
+            usernameAllowed: false,
+            passwordsMatch: false,
             disabled: true
         }
         this.sendRegisterRequest = this.sendRegisterRequest.bind(this);
@@ -23,24 +27,33 @@ class SignUp extends React.Component{
     }
 
     handleUsernameChange(event){
-        // TODO is it a valid username?
-        this.setState({username: event.target.value, error: false})
+        let value = event.target.value;
+        let allowed = usernameRegex.test(value);
+        this.setState({
+            username: value,
+            usernameAllowed: allowed,
+            disabled: !this.state.passwordsMatch ||  !allowed
+        })
     }
 
     handlePasswordChange(event){
         // TODO disable if password is not stronk
+        let value = event.target.value
+        let passMatch = value === this.state.confirmPassword
         this.setState({
-            password: event.target.value,
-            error: false,
-            disabled: this.state.confirmPassword !== event.target.value,
+            password: value,
+            passwordsMatch: passMatch,
+            disabled: !passMatch || !this.state.usernameAllowed
         })
     }
 
     handleConfirmPasswordChange(event){
+        let value = event.target.value
+        let passMatch = value === this.state.password;
         this.setState({
-            confirmPassword: event.target.value,
-            error: false,
-            disabled: this.state.password !== event.target.value,
+            confirmPassword: value,
+            passwordsMatch: passMatch,
+            disabled: !passMatch || !this.state.usernameAllowed
         })
     }
 
@@ -61,8 +74,9 @@ class SignUp extends React.Component{
         })
             .then(res => {
                 if (res.status === 200){
+                    // TODO show some success thing
                     console.log("register successful")
-                    this.props.history.push("/inbox");
+                    this.props.history.push("/index.html");
                 } else {
                     throw new Error()
                 }
@@ -75,6 +89,12 @@ class SignUp extends React.Component{
     }
 
     render() {
+        let e = false;
+        if (!this.state.usernameAllowed && this.state.username){
+            e = "Usernames are 3-30 alphanumeric characters"
+        } else if (!this.state.passwordsMatch && this.state.confirmPassword){
+            e = "Passwords do not match"
+        }
         return (
             <div>
                 <form action="none">
@@ -84,7 +104,7 @@ class SignUp extends React.Component{
                 <Password onChange={this.handleConfirmPasswordChange} submit={this.sendRegisterRequest}/>
                 <Button text="Sign Up" onClick={this.sendRegisterRequest} disabled={this.state.disabled}/>
                 </form>
-                {this.state.error? <Error text={this.state.error} /> : <></>}
+                {e? <Error text={e} /> : <></>}
                 <SmolLink text={"Already have an account?"} to="/index.html"/>
             </div>
         );

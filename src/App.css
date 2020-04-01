@@ -81,6 +81,7 @@ div.error-container {
   display: flex;
   flex-flow: row;
   align-items: center;
+  width: 220px;
 }
 
 div.menu {
