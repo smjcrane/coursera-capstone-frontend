@@ -3,7 +3,7 @@ import Error from "./Error";
 import Button from "./inputs/Button";
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
-const messageRegex = /^[A-Za-z0-9 ]{1,999}$/
+const messageRegex = /^[A-Za-z0-9 ]{0,999}$/
 
 class SendBox extends React.Component{
     constructor(props){

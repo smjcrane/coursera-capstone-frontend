@@ -26,7 +26,7 @@ class Inbox extends React.Component {
                 this.el.scrollIntoView({ behavior: 'smooth' });
             })
             .catch(err => {
-                //this.props.history.push("/index.html")
+                this.props.history.push("/index.html")
             })
     }
 

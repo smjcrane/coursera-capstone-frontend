@@ -11,7 +11,7 @@ function About(){
                     </a>
                 </span>
                  &nbsp;by Maryland University.</p>
-            <p>If you have any feedback for me, you can send me a message in my app.  My username is 'simon' (without quotes).</p>
+            <p>If you have any feedback for me, you can send me a message in my app.  My username is 'SIMON' (without quotes).</p>
             <p>It may disappear permanently without warning at any time.</p>
         </div>
     )

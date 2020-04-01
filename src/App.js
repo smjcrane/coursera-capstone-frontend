@@ -8,6 +8,7 @@ import Inbox from "./Inbox";
 import About from "./About";
 import Footer from "./Footer"
 import Privacy from "./Privacy";
+import SignUp from "./SignUp";
 
 function App() {
   return (
@@ -23,14 +24,20 @@ function App() {
               <Route path="/privacy">
                   <Privacy/>
               </Route>
+              <Route path="/register">
+                  <>
+                  <h1>Register for an account</h1>
+                  <SignUp />
+                  </>
+              </Route>
               <Route path="/inbox">
                   <Inbox />
               </Route>
               <Route path="/index.html">
-                  <div>
+                  <>
                       <h1>Welcome!<br />Log in to get started<br /></h1>
                       <Login />
-                  </div>
+                  </>
               </Route>
               <Route path="/">
                   <Inbox />

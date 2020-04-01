@@ -4,6 +4,7 @@ import SmolLink from "./inputs/SmolLink";
 function Footer(){
     return (
         <div className="footer">
+            <SmolLink text="Home" to="/"/>
             <SmolLink text="About" to="/about"/>
             <SmolLink text="Privacy" to="/privacy" />
         </div>

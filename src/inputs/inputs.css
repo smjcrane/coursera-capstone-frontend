@@ -45,6 +45,7 @@ button {
 
 button[disabled]{
     border-color: lightgray;
+    cursor: auto;
 }
 
 .smol-link {
