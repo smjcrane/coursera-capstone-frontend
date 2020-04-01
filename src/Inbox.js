@@ -2,6 +2,7 @@ import React from "react";
 import Message from "./Message"
 import Menu from "./Menu";
 import {withRouter} from "react-router-dom";
+import SendBox from "./SendBox";
 
 class Inbox extends React.Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Inbox extends React.Component {
             .then(resm => resm.json())
             .then(datam => this.setState({messages: datam}))
             .catch(err => {
-                this.props.history.push("/index.html")
+                //this.props.history.push("/index.html")
             })
     }
 
@@ -42,13 +43,14 @@ class Inbox extends React.Component {
         return (
             <>
                 <Menu />
-            <div>
                 <h2>Welcome, {this.state.username}</h2>
                 <p>{text}</p>
+                <div className="message-list-container">
                 <ul>
                     {this.state.messages.map(Message)}
                 </ul>
-            </div>
+                </div>
+                <SendBox />
                 </>
         );
     }

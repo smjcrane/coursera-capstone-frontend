@@ -83,3 +83,28 @@ div.menu {
   width: calc(100% - 20px);
   padding: 10px;
 }
+
+.speaker{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.message-contents{
+  color: lawngreen;
+}
+
+.message-list-container{
+  max-height: 400px;
+}
+
+.message-field-container{
+  display: flex;
+  flex-flow: column;
+}
+
+.send-message-contents{
+  min-height: 1em;
+  height: 10em;
+  resize: vertical;
+  margin-bottom: 10px;
+}

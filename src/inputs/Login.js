@@ -22,11 +22,11 @@ class Login extends React.Component{
     }
 
     handleUsernameChange(event){
-        this.setState({username: event.target.value})
+        this.setState({username: event.target.value, error: false})
     }
 
     handlePasswordChange(event){
-        this.setState({password: event.target.value})
+        this.setState({password: event.target.value, error: false})
     }
 
     sendLogInRequest(){

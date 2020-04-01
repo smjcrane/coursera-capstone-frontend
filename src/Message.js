@@ -1,8 +1,13 @@
 import React from "react"
 
 function Message(props) {
-    var s = props.username + " says " + props.content;
-    return <p key={props.timestamp+props.username+props.content}>{s}</p>
+    return (
+        <p key={props.timestamp+props.username+props.content}>
+            <span className="speaker">{props.username}</span>
+            <span className="verb">says</span>
+            <span className="message-contents">{props.content}</span>
+        </p>
+    );
 }
 
 export default Message
