@@ -4,6 +4,7 @@ import Password from "./Password";
 import Button from "./Button";
 import SmolLink from "./SmolLink";
 import Error from "../Error";
+import {withRouter} from "react-router-dom";
 
 class Login extends React.Component{
     constructor(props){
@@ -43,7 +44,7 @@ class Login extends React.Component{
             .then(res => {
                 if (res.status === 200){
                     console.log("log in successful")
-                    window.location.replace("/inbox")
+                    this.props.history.push("/inbox");
                 } else {
                     var e = "An error occurred"
                     if (res.status === 401){
@@ -78,4 +79,4 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+export default withRouter(Login);
