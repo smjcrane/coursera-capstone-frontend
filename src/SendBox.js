@@ -85,7 +85,7 @@ class SendBox extends React.Component{
 
     render(){
         return (
-            <div style={{"width": "80%"}}>
+            <div style={{"width": "90%"}}>
                 <h3>Send a message</h3>
                 <div className="input-field-container">
                     <label htmlFor="recipient">

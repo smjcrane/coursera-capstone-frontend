@@ -21,7 +21,10 @@ class Inbox extends React.Component {
                 fetch("https://stormy-ridge-49818.herokuapp.com/messages", {credentials: "include"})
             )
             .then(resm => resm.json())
-            .then(datam => this.setState({messages: datam}))
+            .then(datam => {
+                this.setState({messages: datam});
+                this.el.scrollIntoView({ behavior: 'smooth' });
+            })
             .catch(err => {
                 //this.props.history.push("/index.html")
             })
@@ -49,6 +52,7 @@ class Inbox extends React.Component {
                 <ul>
                     {this.state.messages.map(Message)}
                 </ul>
+                    <div ref={el => { this.el = el; }} />
                 </div>
                 <SendBox />
                 </>
