@@ -1,5 +1,7 @@
 import React from "react";
 import Message from "./Message"
+import Menu from "./Menu";
+import {withRouter} from "react-router-dom";
 
 class Inbox extends React.Component {
     constructor(props) {
@@ -20,7 +22,7 @@ class Inbox extends React.Component {
             .then(resm => resm.json())
             .then(datam => this.setState({messages: datam}))
             .catch(err => {
-                window.location.replace("/index.html")
+                this.props.history.push("/index.html")
             })
     }
 
@@ -38,6 +40,8 @@ class Inbox extends React.Component {
                 text="You have "+this.state.messages.length+" messages"
         }
         return (
+            <>
+                <Menu />
             <div>
                 <h2>Welcome, {this.state.username}</h2>
                 <p>{text}</p>
@@ -45,8 +49,9 @@ class Inbox extends React.Component {
                     {this.state.messages.map(Message)}
                 </ul>
             </div>
+                </>
         );
     }
 }
 
-export default Inbox;
+export default withRouter(Inbox);
