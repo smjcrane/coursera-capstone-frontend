@@ -1,7 +1,7 @@
 import React from 'react'
 import './inputs.css'
 
-class Username extends React.Component {
+class PhoneNumber extends React.Component {
     constructor(props)
     {
         super(props)
@@ -19,16 +19,16 @@ class Username extends React.Component {
     {
         return (<div className="input-field-container" tabIndex={-1}>
             <label
-                htmlFor="username">
-                {this.props.text || "Username"}
+                htmlFor="phone">
+                {this.props.text || "Phone Number (optional)"}
             </label>
             <input
-                autoComplete="username"
-                name="username"
-                type="text"
+                autoComplete="phone"
+                name="phone"
+                type="tel"
                 className="username"
-                hint="username"
-                placeholder="Username"
+                hint="Phone number"
+                placeholder="Phone number"
                 value={this.props.value}
                 onChange={this.props.onChange}
                 onKeyDown={this.onKeyDown}>
@@ -37,4 +37,4 @@ class Username extends React.Component {
     }
 }
 
-export default Username;
+export default PhoneNumber;

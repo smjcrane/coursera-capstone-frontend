@@ -10,7 +10,11 @@ class Menu extends React.Component{
 
 
     sendLogOutRequest() {
-        fetch("https://stormy-ridge-49818.herokuapp.com/logout", {credentials: "include"})
+        fetch("https://stormy-ridge-49818.herokuapp.com/logout",
+            {
+                method: "post",
+                credentials: "include",
+            })
             .then(this.props.history.push("/index.html"))
     }
 

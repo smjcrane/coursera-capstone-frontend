@@ -4,7 +4,7 @@ import Button from "./Button";
 import "./inputs.css"
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
-const messageRegex = /^[A-Za-z0-9 ]{0,999}$/
+const messageRegex = /^[A-Za-z0-9 \\\^\-!"£$%&*()#';?.>,<|/`\n€]{1,999}$/
 
 class SendBox extends React.Component{
     constructor(props){
@@ -48,7 +48,7 @@ class SendBox extends React.Component{
             })
         } else {
             this.setState({
-                contentsError: "Messages can be 1-999 alphanumeric characters and spaces",
+                contentsError: "Unsupported character",
                 disabled: true,
             })
         }
@@ -99,8 +99,8 @@ class SendBox extends React.Component{
                         value={this.state.recipient}
                         onChange={this.handleToChange}
                     />
-                    {this.state.recipientError? <Error text={this.state.recipientError}/> : <></>}
                 </div>
+                {this.state.recipientError? <Error text={this.state.recipientError}/> : <></>}
                 <div className="message-field-container">
                     <label htmlFor="contents">
                         Message:
@@ -111,7 +111,6 @@ class SendBox extends React.Component{
                         placeholder="Hello"
                         value={this.state.contents}
                         onChange={this.handleMessageChange}
-                        onKeyDown={(event) => {if (event.key === "Enter") this.sendMessage()}}
                     />
                     {this.state.contentsError? <Error text={this.state.contentsError}/> : <></>}
                 </div>

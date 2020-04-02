@@ -6,6 +6,7 @@ import SmolLink from "./inputs/SmolLink";
 import Error from "./Error";
 import {withRouter} from "react-router-dom";
 import StrengthMeter from "./StrengthMeter";
+import PhoneNumber from "./inputs/PhoneNumber";
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
 
@@ -16,6 +17,7 @@ class SignUp extends React.Component{
             username: "",
             password: "",
             confirmPassword: "",
+            phone: "",
             usernameAllowed: false,
             passwordsMatch: false,
             disabled: true,
@@ -24,7 +26,8 @@ class SignUp extends React.Component{
         this.sendRegisterRequest = this.sendRegisterRequest.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this)
+        this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
+        this.handlePhoneChange = this.handlePhoneChange.bind(this);
     }
 
     handleUsernameChange(event){
@@ -45,6 +48,12 @@ class SignUp extends React.Component{
             password: value,
             passwordsMatch: passMatch,
             disabled: !passMatch || !this.state.usernameAllowed
+        })
+    }
+
+    handlePhoneChange(event){
+        this.setState({
+            phone: event.target.value,
         })
     }
 
@@ -70,7 +79,8 @@ class SignUp extends React.Component{
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
                 username: this.state.username,
-                password: this.state.password
+                password: this.state.password,
+                phone: this.state.phone,
             })
         })
             .then(res => {
@@ -103,13 +113,27 @@ class SignUp extends React.Component{
         return (
             <div>
                 <form action="none">
-                <Username onChange={this.handleUsernameChange} submit={this.sendRegisterRequest}/>
+                <Username
+                    text="Username (case-sensitive)"
+                    onChange={this.handleUsernameChange}
+                    submit={this.sendRegisterRequest}/>
+                    {!this.state.usernameAllowed && this.state.username ?
+                        <div className="input-field-container">
+                            <Error text="Usernames are 3-30 alphanumeric characters"/>
+                        </div> : <></> }
                 <Password onChange={this.handlePasswordChange} submit={this.sendRegisterRequest}/>
                 <StrengthMeter password={this.state.password} />
-                <Password onChange={this.handleConfirmPasswordChange} submit={this.sendRegisterRequest}/>
+                <Password
+                    text="Confirm Password"
+                    onChange={this.handleConfirmPasswordChange}
+                    submit={this.sendRegisterRequest}/>
+                <PhoneNumber onChange={this.handlePhoneChange} submit={this.sendRegisterRequest} />
                 <Button text="Sign Up" onClick={this.sendRegisterRequest} disabled={this.state.disabled}/>
                 </form>
-                {e? <Error text={e} /> : <></>}
+                {this.state.alreadyExists?
+                    <div className="input-field-container">
+                        <Error text="User already exists" />
+                    </div> : <></>}
                 <SmolLink text={"Already have an account?"} to="/index.html"/>
             </div>
         );

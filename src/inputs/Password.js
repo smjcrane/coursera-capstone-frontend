@@ -17,7 +17,7 @@ class Password extends React.Component{
         return (<div className="input-field-container" tabIndex={-1}>
             <label
                 htmlFor="password">
-                Password
+                {this.props.text || "Password"}
             </label>
             <input
                 onChange={this.props.onChange}

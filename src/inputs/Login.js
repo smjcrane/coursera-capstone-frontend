@@ -73,7 +73,7 @@ class Login extends React.Component{
                 <Password onChange={this.handlePasswordChange} submit={this.sendLogInRequest}/>
                 <Button text="Log in" onClick={this.sendLogInRequest} disabled={this.state.disabled}/>
                 </form>
-                {this.state.error? <Error text={this.state.error} /> : <></>}
+                {this.state.error? <div className="input-field-container"> <Error text={this.state.error} /></div> : <></>}
                 <SmolLink text={"Sign up for an account"} to="/register"/>
                 <SmolLink text={"Forgot password?"}/>
             </div>
