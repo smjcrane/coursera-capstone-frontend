@@ -11,8 +11,8 @@ function Privacy(){
             <ul>
                 <li>Your username</li>
                 <li>The hash of your password</li>
-                <li>Your phone number (optionally)</li>
-                <li>Your messages to and from other users</li>
+                <li>Your phone number (optional, stored encrypted if provided)</li>
+                <li>Your messages to and from other users (stored encrypted)</li>
             </ul>
             <h3>How your data is used</h3>
             <p>Anyone who knows your username can send you a message.  We will never reveal your username to others, but they may guess it.  We do not currently allow users to block messages from people they don't know.</p>
