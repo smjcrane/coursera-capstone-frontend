@@ -17,6 +17,9 @@ class Inbox extends React.Component {
         fetch("https://stormy-ridge-49818.herokuapp.com/whoami", {credentials: "include"})
             .then(res => res.json())
             .then(data => this.setState({username: data.username}))
+            .catch(err => {
+                this.props.history.push("/index.html")
+            })
             .then(() =>
                 fetch("https://stormy-ridge-49818.herokuapp.com/messages", {credentials: "include"})
             )
@@ -26,7 +29,10 @@ class Inbox extends React.Component {
                 this.el.scrollIntoView({ behavior: 'smooth' });
             })
             .catch(err => {
-                this.props.history.push("/index.html")
+                console.log("Error getting messages");
+                this.setState({
+                    messages: []
+                })
             })
     }
 

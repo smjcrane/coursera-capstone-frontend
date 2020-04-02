@@ -23,7 +23,7 @@ class ForgotPassword extends React.Component{
 
 
     sendResetRequest(){
-        this.setState({disabled: true})
+        this.setState({disabled: true, error: false})
         setTimeout(() => this.setState({disabled: false}), 2000)
         fetch("https://stormy-ridge-49818.herokuapp.com/sendresetcode", {
             method: "post",
@@ -38,7 +38,7 @@ class ForgotPassword extends React.Component{
                     this.props.history.push("/entercode?username="+this.state.username)
                 } else {
                    this.setState({
-                       error: "An error occurred.  Check the spelling of your username (it is case-sensitive)."
+                       error: "An error occurred"
                    })
                 }
             })

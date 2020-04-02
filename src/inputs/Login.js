@@ -12,7 +12,6 @@ class Login extends React.Component{
         this.state={
             username: "",
             password: "",
-            attempts: [],
             error: false,
             disabled: false
         }
@@ -30,7 +29,7 @@ class Login extends React.Component{
     }
 
     sendLogInRequest(){
-        this.setState({disabled: true})
+        this.setState({disabled: true, error: false})
         setTimeout(() => this.setState({disabled: false}), 2000)
         fetch("https://stormy-ridge-49818.herokuapp.com/auth", {
             method: "post",
@@ -59,7 +58,6 @@ class Login extends React.Component{
             })
             .catch(() => {
                 this.setState({
-                    attempts: [...this.state.attempts, new Date().getTime()],
                     error: "An error occurred"
                 })
             })
