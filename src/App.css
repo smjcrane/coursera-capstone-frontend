@@ -42,7 +42,12 @@ div.header {
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
-  background-image: linear-gradient(teal, aliceblue);
+  background-image: linear-gradient(lightblue, white);
+}
+
+.header > img {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 a {
@@ -106,7 +111,7 @@ div.menu {
   width: 100%;
 }
 
-message-list-container ul {
+.message-list-container ul {
   list-style: none;
   padding-left: 25px;
   padding-right: 25px;
