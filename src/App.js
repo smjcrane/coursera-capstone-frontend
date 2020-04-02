@@ -9,6 +9,8 @@ import About from "./About";
 import Footer from "./Footer"
 import Privacy from "./Privacy";
 import SignUp from "./SignUp";
+import ForgotPassword from "./ForgotPassword";
+import ResetWithCode from "./ResetWithCode";
 
 function App() {
   return (
@@ -29,6 +31,12 @@ function App() {
                   <h1>Register for an account</h1>
                   <SignUp />
                   </>
+              </Route>
+              <Route path="/forgot">
+                  <ForgotPassword />
+              </Route>
+              <Route path="/entercode">
+                  <ResetWithCode />
               </Route>
               <Route path="/inbox">
                   <Inbox />

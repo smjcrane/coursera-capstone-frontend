@@ -102,14 +102,6 @@ class SignUp extends React.Component{
     }
 
     render() {
-        let e = false;
-        if (!this.state.usernameAllowed && this.state.username){
-            e = "Usernames are 3-30 alphanumeric characters"
-        } else if (!this.state.passwordsMatch && this.state.confirmPassword){
-            e = "Passwords do not match"
-        } else if (this.state.alreadyExists){
-            e = "User already exists"
-        }
         return (
             <div>
                 <form action="none">
@@ -127,6 +119,9 @@ class SignUp extends React.Component{
                     text="Confirm Password"
                     onChange={this.handleConfirmPasswordChange}
                     submit={this.sendRegisterRequest}/>
+                    {this.state.passwordsMatch || !this.state.confirmPassword || <div className="input-field-container">
+                        <Error text="Passwords do not match" />
+                    </div>}
                 <PhoneNumber onChange={this.handlePhoneChange} submit={this.sendRegisterRequest} />
                 <Button text="Sign Up" onClick={this.sendRegisterRequest} disabled={this.state.disabled}/>
                 </form>

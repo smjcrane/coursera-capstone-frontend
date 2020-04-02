@@ -75,7 +75,7 @@ class Login extends React.Component{
                 </form>
                 {this.state.error? <div className="input-field-container"> <Error text={this.state.error} /></div> : <></>}
                 <SmolLink text={"Sign up for an account"} to="/register"/>
-                <SmolLink text={"Forgot password?"}/>
+                <SmolLink text={"Forgot password?"} to="/forgot"/>
             </div>
         );
     }
