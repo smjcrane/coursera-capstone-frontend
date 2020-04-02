@@ -4,11 +4,11 @@ import Button from "./inputs/Button";
 import Error from "./Error";
 import SmolLink from "./inputs/SmolLink";
 import Password from "./inputs/Password";
-import StrengthMeter from "./StrengthMeter";
 import ResetCode from "./inputs/ResetCode";
 import {
     withRouter,
 } from "react-router-dom";
+import {PasswordStrength, howStronk, okay} from "./inputs/PasswordStrength";
 
 class ResetWithCode extends React.Component{
     constructor(props){
@@ -32,7 +32,7 @@ class ResetWithCode extends React.Component{
     handleUsernameChange(event){
         this.setState({
             username: event.target.value,
-            disabled: !(this.state.password === this.state.confirmPassword) || !this.state.resetcode || !this.state.username
+            disabled: !(this.state.password === this.state.confirmPassword) || !this.state.resetcode || !this.state.username || !this.state.passwordStronk
         })
     }
 
@@ -43,13 +43,14 @@ class ResetWithCode extends React.Component{
     }
 
     handlePasswordChange(event){
-        // TODO disable if password is not stronk
         let value = event.target.value
         let passMatch = value === this.state.confirmPassword
+        let isStronk = howStronk(value) > okay
         this.setState({
             password: value,
             passwordsMatch: passMatch,
-            disabled: !passMatch || !this.state.resetcode || !this.state.username
+            passwordStronk: isStronk,
+            disabled: !passMatch || !this.state.resetcode || !this.state.username || !isStronk
         })
     }
 
@@ -59,7 +60,7 @@ class ResetWithCode extends React.Component{
         this.setState({
             confirmPassword: value,
             passwordsMatch: passMatch,
-            disabled: !passMatch || !this.state.resetcode || !this.state.username
+            disabled: !passMatch || !this.state.resetcode || !this.state.username || !this.state.passwordStronk
         })
     }
 
@@ -124,7 +125,7 @@ class ResetWithCode extends React.Component{
                         <Username value={this.state.username} onChange={this.handleUsernameChange} submit={this.sendResetRequest}/>
                         <ResetCode value={this.state.resetcode} onChange={this.handleResetCodeChange} submit={this.sendResetRequest}/>
                         <Password value={this.state.password} onChange={this.handlePasswordChange} submit={this.sendResetRequest}/>
-                        <StrengthMeter password={this.state.password} />
+                        {!this.state.password || <PasswordStrength value={this.state.password} />}
                         <Password
                             text="Confirm Password"
                             onChange={this.handleConfirmPasswordChange}

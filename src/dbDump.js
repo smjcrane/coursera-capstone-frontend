@@ -23,7 +23,7 @@ class DbDump extends React.Component{
             <ReactJson
                 src={this.state.data}
                 collapsed="2"
-                collapseStringsAfterLength="200"
+                collapseStringsAfterLength="20"
                 displayObjectSize="false"
                 displayDataTypes="false"
             />

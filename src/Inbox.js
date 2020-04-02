@@ -16,7 +16,12 @@ class Inbox extends React.Component {
     componentDidMount() {
         fetch("https://stormy-ridge-49818.herokuapp.com/whoami", {credentials: "include"})
             .then(res => res.json())
-            .then(data => this.setState({username: data.username}))
+            .then(data => {
+                if (data.username === "none"){
+                    throw new Error()
+                }
+                this.setState({username: data.username})
+            })
             .catch(err => {
                 this.props.history.push("/index.html")
             })

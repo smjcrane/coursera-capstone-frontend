@@ -5,8 +5,8 @@ import Button from "./inputs/Button";
 import SmolLink from "./inputs/SmolLink";
 import Error from "./Error";
 import {withRouter} from "react-router-dom";
-import StrengthMeter from "./StrengthMeter";
 import PhoneNumber from "./inputs/PhoneNumber";
+import {PasswordStrength, howStronk, okay} from "./inputs/PasswordStrength";
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
 
@@ -20,6 +20,7 @@ class SignUp extends React.Component{
             phone: "",
             usernameAllowed: false,
             passwordsMatch: false,
+            passwordStronk: false,
             disabled: true,
             alreadyExists: false,
         }
@@ -36,18 +37,19 @@ class SignUp extends React.Component{
         this.setState({
             username: value,
             usernameAllowed: allowed,
-            disabled: !this.state.passwordsMatch ||  !allowed
+            disabled: !this.state.passwordsMatch ||  !allowed || !this.state.passwordStronk
         })
     }
 
     handlePasswordChange(event){
-        // TODO disable if password is not stronk
-        let value = event.target.value
-        let passMatch = value === this.state.confirmPassword
+        let value = event.target.value;
+        let passMatch = value === this.state.confirmPassword;
+        let stronk = howStronk(value) > okay;
         this.setState({
             password: value,
             passwordsMatch: passMatch,
-            disabled: !passMatch || !this.state.usernameAllowed
+            passwordStronk: stronk,
+            disabled: !passMatch || !this.state.usernameAllowed || !stronk
         })
     }
 
@@ -63,7 +65,7 @@ class SignUp extends React.Component{
         this.setState({
             confirmPassword: value,
             passwordsMatch: passMatch,
-            disabled: !passMatch || !this.state.usernameAllowed
+            disabled: !passMatch || !this.state.usernameAllowed || !this.state.passwordStronk
         })
     }
 
@@ -114,7 +116,7 @@ class SignUp extends React.Component{
                             <Error text="Usernames are 3-30 alphanumeric characters"/>
                         </div> : <></> }
                 <Password onChange={this.handlePasswordChange} submit={this.sendRegisterRequest}/>
-                <StrengthMeter password={this.state.password} />
+                    {!this.state.password || <PasswordStrength value={this.state.password} />}
                 <Password
                     text="Confirm Password"
                     onChange={this.handleConfirmPasswordChange}

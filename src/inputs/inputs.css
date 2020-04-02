@@ -77,3 +77,19 @@ button[disabled]{
     border-width: 2px;
     border-color: var(--color-primary);
 }
+
+.pass-weak, .pass-okay, .pass-stronk{
+    font-weight: bold;
+}
+
+.pass-weak{
+    color: red;
+}
+
+.pass-okay{
+    color: orange;
+}
+
+.pass-stronk{
+    color: forestgreen;
+}
