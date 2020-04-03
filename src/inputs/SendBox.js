@@ -4,7 +4,7 @@ import Button from "./Button";
 import "./inputs.css"
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
-const messageRegex = /^[A-Za-z0-9 \\\^\-!"£$%&*()#';?.>,<|/`\n€]{1,999}$/
+const messageRegex = /^[A-Za-z0-9 \\\^\-!"£$%&*()#';?.>,<|/`\n€]*$/
 
 class SendBox extends React.Component{
     constructor(props){
@@ -27,7 +27,7 @@ class SendBox extends React.Component{
             this.setState({
                 recipient: value,
                 recipientError: false,
-                disabled: this.state.contentsError,
+                disabled: !!this.state.contentsError,
             })
         } else {
             this.setState({
@@ -40,16 +40,21 @@ class SendBox extends React.Component{
 
     handleMessageChange(event){
         let value = event.target.value;
-        if (messageRegex.test(value)){
-            this.setState({
-                contents: value,
-                contentsError: false,
-                disabled: this.state.recipientError,
-            })
-        } else {
+        if (!messageRegex.test(value)){
             this.setState({
                 contentsError: "Unsupported character",
                 disabled: true,
+            })
+        } else if (value.length > 999){
+            this.setState({
+                contents: value.substring(0, 999),
+                contentsError: "Max message length exceeded",
+            })
+        } else {
+            this.setState({
+                contents: value,
+                contentsError: false,
+                disabled: !!this.state.recipientError || !this.state.recipient,
             })
         }
     }
@@ -102,9 +107,12 @@ class SendBox extends React.Component{
                 </div>
                 {this.state.recipientError? <Error text={this.state.recipientError}/> : <></>}
                 <div className="message-field-container">
+                    <div style={{"display": "flex", "flex-flow": "row", "justify-content": "space-between", "align-items": "baseline"}}>
                     <label htmlFor="contents">
                         Message:
                     </label>
+                    <p className="subtle">{this.state.contents.length}/999</p>
+                    </div>
                     <textarea
                         className="send-message-contents"
                         name="contents"
