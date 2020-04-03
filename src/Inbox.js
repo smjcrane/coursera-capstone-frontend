@@ -11,6 +11,22 @@ class Inbox extends React.Component {
             username: "Loading...",
             messages: []
         };
+        this.getMessages = this.getMessages.bind(this)
+    }
+
+    getMessages(){
+        return fetch("https://stormy-ridge-49818.herokuapp.com/messages", {credentials: "include"})
+        .then(resm => resm.json())
+            .then(datam => {
+                this.setState({messages: datam});
+                this.el.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(err => {
+                console.log("Error getting messages");
+                this.setState({
+                    messages: []
+                })
+            })
     }
 
     componentDidMount() {
@@ -25,20 +41,7 @@ class Inbox extends React.Component {
             .catch(err => {
                 this.props.history.push("/index.html")
             })
-            .then(() =>
-                fetch("https://stormy-ridge-49818.herokuapp.com/messages", {credentials: "include"})
-            )
-            .then(resm => resm.json())
-            .then(datam => {
-                this.setState({messages: datam});
-                this.el.scrollIntoView({ behavior: 'smooth' });
-            })
-            .catch(err => {
-                console.log("Error getting messages");
-                this.setState({
-                    messages: []
-                })
-            })
+            .then(() => this.getMessages());
     }
 
 
@@ -59,6 +62,7 @@ class Inbox extends React.Component {
                 <Menu />
                 <h2>Welcome, {this.state.username}</h2>
                 <p style={{"margin": "0px"}}>{text}</p>
+                <a className="smol-link" onClick={this.getMessages}>Refresh</a>
                 <div className="message-list-container">
                 <ul>
                     {this.state.messages.map(Message)}
