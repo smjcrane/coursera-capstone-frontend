@@ -22,7 +22,7 @@ class Menu extends React.Component{
     render(){
         return (
             <div className="menu">
-                <img src={logout} alt="Log out" height="40px" onClick={this.sendLogOutRequest}/>
+                <a className="smol-link" onClick={this.sendLogOutRequest}>Log out</a>
                 <SmolLink to="/settings" text="Account Settings" extraprops={{style: {"textAlign": "right"}}}/>
             </div>
         )
