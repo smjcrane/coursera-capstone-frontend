@@ -12,7 +12,6 @@ label{
     width: calc(100% - 14px);
     padding-left: 5px;
     padding-right: 5px;
-    margin-bottom: 10px;
     margin-left: 0px;
     margin-right: 0px;
     border-style: solid;
@@ -31,6 +30,7 @@ div .input-field-container{
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 button {
@@ -80,6 +80,8 @@ button[disabled]{
 
 .pass-weak, .pass-okay, .pass-stronk{
     font-weight: bold;
+    padding: 0px;
+    margin: 5px 0px;
 }
 
 .pass-weak{

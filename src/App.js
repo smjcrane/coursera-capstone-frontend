@@ -12,6 +12,7 @@ import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import ResetWithCode from "./ResetWithCode";
 import DbDump from "./dbDump";
+import Settings from "./Settings";
 
 function App() {
   return (
@@ -50,6 +51,9 @@ function App() {
               </Route>
               <Route path="/dbdump">
                   <DbDump />
+              </Route>
+              <Route path="/settings">
+                  <Settings />
               </Route>
               <Route path="/">
                   <Inbox />

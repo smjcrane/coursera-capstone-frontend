@@ -59,7 +59,7 @@
      id="path4"
      d="M 8.4901841,23.657587 V 17.283976 L 0.55218407,13.300319 V 6.9261044 L 8.4901841,0.55249352 16.427284,6.9261044 v 6.3742146 l -4.0165,1.991828"
      inkscape:connector-curvature="0"
-     style="fill:none;stroke:#020202;stroke-width:1.10501826;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="fill:none;stroke:#020202;stroke-width:1.10501835;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
   <use
      transform="rotate(180,8.489684,15.303901)"
      width="100%"
@@ -68,5 +68,5 @@
      id="use827"
      x="0"
      y="0"
-     style="stroke-width:1.10501826;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="stroke-width:1.10501835;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>

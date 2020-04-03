@@ -8,7 +8,7 @@ import ResetCode from "./inputs/ResetCode";
 import {
     withRouter,
 } from "react-router-dom";
-import {PasswordStrength, howStronk, okay} from "./inputs/PasswordStrength";
+import {PasswordStrength, isStronk} from "./inputs/PasswordStrength";
 
 class ResetWithCode extends React.Component{
     constructor(props){
@@ -45,12 +45,12 @@ class ResetWithCode extends React.Component{
     handlePasswordChange(event){
         let value = event.target.value
         let passMatch = value === this.state.confirmPassword
-        let isStronk = howStronk(value) > okay
+        let isPassStronk = isStronk(value)
         this.setState({
             password: value,
             passwordsMatch: passMatch,
-            passwordStronk: isStronk,
-            disabled: !passMatch || !this.state.resetcode || !this.state.username || !isStronk
+            passwordStronk: isPassStronk,
+            disabled: !passMatch || !this.state.resetcode || !this.state.username || !isPassStronk
         })
     }
 

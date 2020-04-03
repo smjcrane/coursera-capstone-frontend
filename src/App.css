@@ -38,7 +38,7 @@ h2, h3 {
 div.header {
   width: 100%;
   margin: 0px;
-  padding: 20px 0px 0px 0px;
+  padding: 10px 0px 10px 0px;
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
@@ -93,6 +93,8 @@ div.menu {
   width: calc(100% - 20px);
   padding: 10px;
   position: absolute;
+  display: flex;
+  justify-content: space-between;
 }
 
 .speaker{
@@ -117,7 +119,7 @@ div.menu {
   padding-right: 25px;
 }
 
-p.message{
+p{
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }

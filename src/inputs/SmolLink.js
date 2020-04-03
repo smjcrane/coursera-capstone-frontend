@@ -2,7 +2,7 @@ import React from 'react'
 import './inputs.css'
 
 function SmolLink(props){
-    return (<div className="input-field-container">
+    return (<div className="input-field-container" {...props.extraprops}>
         <a href={props.to} tabIndex="-1">
         <p
             className="smol-link"
