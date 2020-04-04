@@ -107,7 +107,7 @@ class SendBox extends React.Component{
                 </div>
                 {this.state.recipientError? <Error text={this.state.recipientError}/> : <></>}
                 <div className="message-field-container">
-                    <div style={{"display": "flex", "flex-flow": "row", "justify-content": "space-between", "align-items": "baseline"}}>
+                    <div style={{"display": "flex", "flexFlow": "row", "justifyContent": "space-between", "alignItems": "baseline"}}>
                     <label htmlFor="contents">
                         Message:
                     </label>

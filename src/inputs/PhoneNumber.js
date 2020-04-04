@@ -28,7 +28,7 @@ class PhoneNumber extends React.Component {
                 type="tel"
                 className="username"
                 hint="Phone number"
-                placeholder="Phone number"
+                placeholder="+447788123123"
                 value={this.props.value}
                 onChange={this.props.onChange}
                 onKeyDown={this.onKeyDown}>

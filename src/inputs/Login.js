@@ -13,7 +13,7 @@ class Login extends React.Component{
             username: "",
             password: "",
             error: false,
-            disabled: false
+            disabled: false,
         }
         this.sendLogInRequest = this.sendLogInRequest.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -69,7 +69,7 @@ class Login extends React.Component{
                 <form action="none">
                 <Username onChange={this.handleUsernameChange} submit={this.sendLogInRequest}/>
                 <Password onChange={this.handlePasswordChange} submit={this.sendLogInRequest}/>
-                <Button text="Log in" onClick={this.sendLogInRequest} disabled={this.state.disabled}/>
+                <Button text="Log in" onClick={this.sendLogInRequest} disabled={this.state.disabled || !this.state.username || !this.state.password}/>
                 </form>
                 {this.state.error? <div className="input-field-container"> <Error text={this.state.error} /></div> : <></>}
                 <SmolLink text={"Sign up for an account"} to="/register"/>

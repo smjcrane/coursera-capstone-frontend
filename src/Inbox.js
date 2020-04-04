@@ -38,10 +38,10 @@ class Inbox extends React.Component {
                 }
                 this.setState({username: data.username})
             })
+            .then(() => this.getMessages())
             .catch(err => {
                 this.props.history.push("/index.html")
             })
-            .then(() => this.getMessages());
     }
 
 
