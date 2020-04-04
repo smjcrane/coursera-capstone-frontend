@@ -14,7 +14,7 @@ class Settings extends React.Component{
         this.state={
             username: "none",
             oldPassword: "",
-            auth: true,
+            auth: false,
             authError: false,
             authDisabled: true,
             password: "",
@@ -35,9 +35,10 @@ class Settings extends React.Component{
         this.auth = this.auth.bind(this);
         this.sendChangePasswordRequest = this.sendChangePasswordRequest.bind(this);
         this.sendChangePhoneRequest = this.sendChangePhoneRequest.bind(this);
+        this.getPhone = this.getPhone.bind(this);
     }
 
-    componentDidMount() {
+    getPhone() {
         fetch("https://stormy-ridge-49818.herokuapp.com/getphone",{
             method: "post",
             credentials: "include",
@@ -94,7 +95,7 @@ class Settings extends React.Component{
     }
 
     auth(){
-        this.setState({authDisabled: true})
+        this.setState({authDisabled: true});
         fetch("https://stormy-ridge-49818.herokuapp.com/auth", {
             method: "post",
             credentials: "include",
@@ -105,14 +106,14 @@ class Settings extends React.Component{
         })
             .then(res => {
                 if (res.status === 200){
-                    this.setState({auth: true, authError: false})
-                    // TODO get current phone number
+                    this.setState({auth: true, authError: false});
+                    this.getPhone();
                 } else {
-                    let e = "An error occurred"
+                    let e = "An error occurred";
                     if (res.status === 401){
                         e = "Incorrect username or password"
                     }
-                    console.log(e)
+                    console.log(e);
                     this.setState({
                         authError: e,
                         authDisabled: false,
