@@ -4,6 +4,7 @@ import {isStronk, PasswordStrength} from "./inputs/PasswordStrength";
 import PhoneNumber from "./inputs/PhoneNumber";
 import Button from "./inputs/Button";
 import Error from "./Error";
+import SmolLink from "./inputs/SmolLink";
 
 const phoneRegex = /^[+][0-9]{10,15}$/
 
@@ -13,7 +14,7 @@ class Settings extends React.Component{
         this.state={
             username: "none",
             oldPassword: "",
-            auth: false,
+            auth: true,
             authError: false,
             authDisabled: true,
             password: "",
@@ -21,9 +22,11 @@ class Settings extends React.Component{
             passwordsMatch: true,
             passwordDisabled: true,
             passwordError: false,
+            passwordMessage: false,
             phone: "",
             phoneDisabled: true,
             phoneError: false,
+            phoneMessage: false,
         }
         this.handleOldPasswordChange = this.handleOldPasswordChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -34,8 +37,23 @@ class Settings extends React.Component{
         this.sendChangePhoneRequest = this.sendChangePhoneRequest.bind(this);
     }
 
-    handleOldPasswordChange(event){
-        if (this.state.auth){
+    componentDidMount() {
+        fetch("https://stormy-ridge-49818.herokuapp.com/getphone",{
+            method: "post",
+            credentials: "include",
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                password: this.state.oldPassword,
+            })
+        }).then(res => res.json())
+            .then(data => {
+                this.setState({phone: data.phone})
+            })
+            .catch(err => { /*TODO*/ })
+    }
+
+    handleOldPasswordChange(event) {
+        if (this.state.auth) {
             return
         }
         let value = event.target.value;
@@ -43,7 +61,7 @@ class Settings extends React.Component{
             oldPassword: value,
             authDisabled: !value,
             authError: false,
-        }, ()=>{console.log(this.state)})
+        })
     }
 
     handlePasswordChange(event){
@@ -52,6 +70,7 @@ class Settings extends React.Component{
             password: value,
             passwordDisabled: (value !== this.state.confirmPassword) || !isStronk(value),
             passwordError: false,
+            passwordMessage: false,
         })
     }
 
@@ -60,6 +79,7 @@ class Settings extends React.Component{
             phone: event.target.value,
             phoneDisabled: !phoneRegex.test(event.target.value),
             phoneError: false,
+            phoneMessage: false,
         })
     }
 
@@ -69,6 +89,7 @@ class Settings extends React.Component{
             confirmPassword: value,
             passwordDisabled: (value !== this.state.password) || !isStronk(value),
             passwordError: false,
+            passwordMessage: false,
         })
     }
 
@@ -127,6 +148,7 @@ class Settings extends React.Component{
                         oldPassword: this.state.password,
                         password: "",
                         confirmPassword: "",
+                        passwordMessage: true,
                     })
                 } else {
                     throw new Error()
@@ -145,7 +167,7 @@ class Settings extends React.Component{
             return;
         }
         this.setState({phoneDisabled: true})
-        fetch("https://stormy-ridge-49818.herokuapp.com/setPhone", {
+        fetch("https://stormy-ridge-49818.herokuapp.com/setphone", {
             method: "post",
             credentials: "include",
             headers:{'Content-Type': 'application/json'},
@@ -160,6 +182,7 @@ class Settings extends React.Component{
                     this.setState({
                         phoneError: false,
                         phoneDisabled: false,
+                        phoneMessage: true,
                     })
                 } else {
                     throw new Error()
@@ -174,6 +197,9 @@ class Settings extends React.Component{
 
     render(){
         return(<>
+            <div className="menu">
+                <SmolLink text="Back to Inbox" to="/inbox"/>
+            </div>
             <h1>Settings</h1>
             {this.state.auth || <>
                 <Password text="Current Password" submit={this.auth} value={this.state.oldPassword} onChange={this.handleOldPasswordChange}/>
@@ -188,10 +214,12 @@ class Settings extends React.Component{
                 {(this.state.password === this.state.confirmPassword) || <Error text={"Passwords do not match"}/>}
                 <Button text="Change password" disabled={this.state.passwordDisabled} onClick={this.sendChangePasswordRequest}/>
                 {!this.state.passwordError || <Error text={"Error updating password"}/>}
+                {!this.state.passwordMessage || <p className="success">Success!</p>}
                 <h2>Password Recovery</h2>
                 <PhoneNumber text="Phone number (include country code)" onChange={this.handlePhoneChange} submit={this.sendChangePhoneRequest}/>
                 <Button text="Change phone number" disabled={this.state.phoneDisabled} onClick={this.sendChangePhoneRequest}/>
                 {!this.state.phoneError || <Error text={"Error updating phone number"} />}
+                {!this.state.phoneMessage || <p className="success">Success!</p>}
             </>)}
             </>)
     }
