@@ -10,10 +10,10 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64.17614"
-   height="115.68111"
+   width="115"
+   height="115"
    version="1.1"
-   viewBox="0 0 16.979323 30.607801"
+   viewBox="0 0 30.425983 30.427589"
    id="svg829"
    sodipodi:docname="_Cool_S_.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
@@ -48,25 +48,25 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="4.3405857"
-     inkscape:cx="32.087315"
-     inkscape:cy="21.171836"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="143.97383"
+     inkscape:cy="-3.7470585"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg829" />
   <path
      id="path4"
-     d="M 8.4901841,23.657587 V 17.283976 L 0.55218407,13.300319 V 6.9261044 L 8.4901841,0.55249352 16.427284,6.9261044 v 6.3742146 l -4.0165,1.991828"
+     d="M 14.840286,23.477375 V 17.103764 L 6.90229,13.120107 V 6.745892 L 14.840286,0.37228108 22.777384,6.745892 v 6.374215 l -4.0165,1.991828"
      inkscape:connector-curvature="0"
-     style="fill:none;stroke:#020202;stroke-width:1.10501835;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="fill:none;stroke:#020202;stroke-width:1.10501838;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
   <use
-     transform="rotate(180,8.489684,15.303901)"
+     transform="rotate(180,14.839794,15.123689)"
      width="100%"
      height="100%"
      xlink:href="#path4"
      id="use827"
      x="0"
      y="0"
-     style="stroke-width:1.10501835;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="stroke-width:1.10501838;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>
