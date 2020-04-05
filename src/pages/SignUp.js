@@ -1,12 +1,12 @@
 import React from "react";
-import Username from "./inputs/Username";
-import Password from "./inputs/Password";
-import Button from "./inputs/Button";
-import SmolLink from "./inputs/SmolLink";
-import Error from "./Error";
+import Username from "../inputs/Username";
+import Password from "../inputs/Password";
+import Button from "../inputs/Button";
+import SmolLink from "../inputs/SmolLink";
+import Error from "../inputs/Error";
 import {withRouter} from "react-router-dom";
-import PhoneNumber from "./inputs/PhoneNumber";
-import {PasswordStrength, isStronk} from "./inputs/PasswordStrength";
+import PhoneNumber from "../inputs/PhoneNumber";
+import {PasswordStrength, isStronk} from "../inputs/PasswordStrength";
 
 const usernameRegex = /^[A-Za-z0-9]{3,30}$/
 
@@ -70,33 +70,36 @@ class SignUp extends React.Component{
         }
         this.setState({waiting: true})
         setTimeout(() => this.setState({waiting: false}), 2000)
-        fetch("https://stormy-ridge-49818.herokuapp.com/register", {
+        let that = this;
+        window.grecaptcha.execute('6LfK6-YUAAAAAAMeD2eJabGWBPfDogVGKWpLXItJ', {action: 'homepage'}).then(function(token) {
+            fetch("https://stormy-ridge-49818.herokuapp.com/register", {
             method: "post",
             credentials: "include",
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password,
-                phone: this.state.phone,
+                username: that.state.username,
+                password: that.state.password,
+                phone: that.state.phone,
+                token: token,
             })
         })
             .then(res => {
                 if (res.status === 200){
                     // TODO show some success thing
                     console.log("register successful")
-                    this.props.history.push("/index.html");
+                    that.props.history.push("/index.html");
                 } else if (res.status === 409){
-                    this.setState({alreadyExists:true})
+                    that.setState({alreadyExists:true})
                 } else {
                     throw new Error()
                 }
             })
             .catch(() => {
-                this.setState({
+                that.setState({
                     error: "An error occurred"
                 })
             })
-    }
+    })}
 
     render() {
         return (

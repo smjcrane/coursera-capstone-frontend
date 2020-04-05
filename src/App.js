@@ -4,15 +4,15 @@ import Login from "./inputs/Login";
 import Centered from "./Centered"
 import Header from "./Header";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Inbox from "./Inbox";
-import About from "./About";
+import Inbox from "./pages/Inbox";
+import About from "./pages/About";
 import Footer from "./Footer"
-import Privacy from "./Privacy";
-import SignUp from "./SignUp";
-import ForgotPassword from "./ForgotPassword";
-import ResetWithCode from "./ResetWithCode";
-import DbDump from "./dbDump";
-import Settings from "./Settings";
+import Privacy from "./pages/Privacy";
+import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetWithCode from "./pages/ResetWithCode";
+import DbDump from "./pages/dbDump";
+import Settings from "./pages/Settings";
 
 function App() {
   return (

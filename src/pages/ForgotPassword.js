@@ -1,9 +1,9 @@
 import React from "react";
-import Username from "./inputs/Username";
-import Button from "./inputs/Button";
-import Error from "./Error";
+import Username from "../inputs/Username";
+import Button from "../inputs/Button";
+import Error from "../inputs/Error";
 import {withRouter} from "react-router-dom";
-import SmolLink from "./inputs/SmolLink";
+import SmolLink from "../inputs/SmolLink";
 
 class ForgotPassword extends React.Component{
     constructor(props){
@@ -25,28 +25,30 @@ class ForgotPassword extends React.Component{
     sendResetRequest(){
         this.setState({disabled: true, error: false})
         setTimeout(() => this.setState({disabled: false}), 2000)
-        fetch("https://stormy-ridge-49818.herokuapp.com/sendresetcode", {
+        let that=this;
+        window.grecaptcha.execute('6LfK6-YUAAAAAAMeD2eJabGWBPfDogVGKWpLXItJ', {action: 'homepage'}).then(function(token) {
+            fetch("https://stormy-ridge-49818.herokuapp.com/sendresetcode", {
             method: "post",
             credentials: "include",
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
-                username: this.state.username,
+                username: that.state.username,
+                token: token,
             })
-        })
-            .then(res => {
+        }).then(res => {
                 if (res.status === 200){
-                    this.props.history.push("/entercode?username="+this.state.username)
+                    that.props.history.push("/entercode?username="+that.state.username)
                 } else {
-                   this.setState({
+                   that.setState({
                        error: "An error occurred"
                    })
                 }
-            })
-            .catch(() => {
-                this.setState({
+            }).catch(() => {
+                that.setState({
                     error: "An error occurred"
                 })
             })
+        })
     }
 
     render() {

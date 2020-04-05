@@ -1,8 +1,8 @@
 import React from "react";
-import Message from "./Message"
-import Menu from "./Menu";
+import Message from "../Message"
+import Menu from "../Menu";
 import {withRouter} from "react-router-dom";
-import SendBox from "./inputs/SendBox";
+import SendBox from "../inputs/SendBox";
 
 class Inbox extends React.Component {
     constructor(props) {

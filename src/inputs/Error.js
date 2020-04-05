@@ -1,5 +1,5 @@
 import React from "react"
-import warning from "./warning.png"
+import warning from "../warning.png"
 
 function Error(props){
     return(
