@@ -74,7 +74,8 @@ class SendBox extends React.Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     to_user: that.state.recipient,
-                    content: that.state.contents
+                    content: that.state.contents,
+                    token: token
                 })
             }).then((res) => {
                 if (res.status === 200) {
