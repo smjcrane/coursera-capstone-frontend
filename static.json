@@ -6,7 +6,7 @@
   "https_only": true,
   "headers": {
     "/**": {
-      "Referrer-Policy": "same-origin"
+      "Strict-Transport-Security": "max-age=31557600"
     }
   }
 }
